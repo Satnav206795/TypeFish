@@ -1,6 +1,8 @@
 from dataclasses import dataclass
+import chess
 
 
+#Evaluation
 @dataclass(frozen=True)
 class Eval:
         cp: float
@@ -15,7 +17,11 @@ class Eval:
 class Result:
         label: str
         reason: str
-        bestMoveUCI: str
-        moveMadeUCI:  str
+        bestMoveUCI: chess.Move
+        moveMadeUCI:  chess.Move
         evalBefore: Eval
         evalAfter: Eval
+
+@dataclass(frozen=True)
+class GameReview:
+      moves: list[Result]

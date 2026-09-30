@@ -1,0 +1,6 @@
+saulochess
+python-chess
+ipython
+pandas
+numpy
+tqdm
