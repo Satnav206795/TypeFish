@@ -1,6 +1,6 @@
 from saulochess import chess_review as cr
 import os
-import chess.engine, chess.pgn
+import chess.engine
 from base import Eval,Result,GameReview
 
 STOCKFISH_PATH = os.path.abspath(
