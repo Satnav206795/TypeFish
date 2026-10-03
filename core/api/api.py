@@ -1,11 +1,15 @@
 from dataclasses import dataclass
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from core.gameReviewer import review as r
 from chess import Board, Move
 import threading, uvicorn
 import time
 from core import dataHandler as dh
 from core.api import chesscom as cc
+
+
+global players 
+players = dh.load(dh.PLAYERS_PATH) 
 
 app = FastAPI()
 appIdentifier = "TypeFish (https://github.com/Satnav206795/TypeFish)"
@@ -34,11 +38,12 @@ def start_api(port=8000):
 @dataclass(frozen=True)
 class reviewGameRequest:
     pgn: str
-    dpeth: int = 18
+    depth: int = 18
+    maxTimePerMove: float = 0.3
 
 @app.post("/review/game")
 async def reviewGame(req : reviewGameRequest) -> r.GameReview:
-    return r.analyiseGame(req.pgn)
+    return r.analyiseGame(req.pgn,req.depth,req.maxTimePerMove)
 
 
 #Review Move
@@ -59,8 +64,25 @@ async def reviewMove(req : reviewMoveRequest) -> r.Result:
 class createPlayerRequest:
     username: str
 
-@app.post("/players/create/chesscom")
-async def createPlayer(req : createPlayerRequest) -> bool:
+@app.post("/chesscom/players/create")
+async def createChesscomPlayer(req : createPlayerRequest) -> bool:
     player = cc.ChessComPlayer(req.username,appIdentifier)
     dh.save(player,dh.PLAYERS_PATH)
+    players = dh.load(dh.PLAYERS_PATH)
     return True
+
+@app.get("/chesscom/players/get")
+async def getAllChesscomPlayers() -> dict[str,dict]:
+    return players
+
+
+
+@app.get("/chesscom/games/{username}/month/all") 
+def getAllGames(username: str) -> list[str]:
+    data = dh.load().get(username.lower())
+    if data is None:
+        raise HTTPException(status_code=404, detail="Player not found")
+
+    player = cc.ChessComPlayer(data["username"], data["user_agent"])
+
+    return player.get_all_months_played()
