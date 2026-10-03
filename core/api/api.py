@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from fastapi import FastAPI
 from gameReviewer import review as r
 from chess import Board, Move
+import chesscom
 
 app = FastAPI()
 
@@ -10,8 +11,10 @@ def health():
     return {"status": "ok"}
 
 
+# --- Reviewing --- #
+
 #Review Game
-@dataclass
+@dataclass(frozen=True)
 class reviewGameRequest:
     pgn: str
     dpeth: int = 18
@@ -22,7 +25,7 @@ async def reviewGame(req : reviewGameRequest) -> r.GameReview:
 
 
 #Review Move
-@dataclass
+@dataclass(frozen=True)
 class reviewMoveRequest:
     fen: str
     moveUCI: str
