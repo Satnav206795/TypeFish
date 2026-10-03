@@ -22,9 +22,26 @@ class ChessComPlayer:
             return None
         return r.json()["archives"]
 
-    def get_games_in_month(self,archiveURL):
-        url = archiveURL
+    def get_games_in_month(self,year : int, month : int):
+        url = constuctMonthArchiveUrl(self.username,year,month)
         r = requests.get(url,headers=self.headers)
         if not r.ok:
             return None
         return r.json()["games"]
+
+def constuctMonthArchiveUrl(username : str, year : int, month : int):
+    return f"https://api.chess.com/pub/player/{username}/games/{year}/{month}"
+
+import requests
+
+def chesscom_user_exists(username: str, user_agent: str) -> bool:
+    r = requests.get(
+        f"https://api.chess.com/pub/player/{username.lower()}",
+        headers={"User-Agent": user_agent},
+        timeout=10,
+    )
+    if r.status_code == 200:
+        return True
+    if r.status_code == 404:
+        return False
+    r.raise_for_status() 
