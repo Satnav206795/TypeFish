@@ -224,3 +224,5 @@ engines/
 
 #Testing
 test.py
+
+data/

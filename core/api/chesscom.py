@@ -4,6 +4,7 @@ from dataclasses import dataclass, field
 
 @dataclass
 class ChessComPlayer:
+    type: str = field(default="chesscom", init=False)
     username: str
     user_agent: str
     base_url: str = field(default="https://api.chess.com/pub", init=False)
@@ -12,6 +13,7 @@ class ChessComPlayer:
     def __post_init__(self):
         self.username = self.username.lower()
         self.headers = {"User-Agent": self.user_agent}
+
 
     def get_all_months_played(self) -> list[str] | None:
         url = f"{self.base_url}/player/{self.username}/games/archives"
