@@ -1,7 +1,7 @@
 from pathlib import Path
 import json
 from dataclasses import asdict
-from core.api import chesscom as cc
+from backend.core.api import chesscom as cc
 from fastapi import HTTPException
 import threading
 

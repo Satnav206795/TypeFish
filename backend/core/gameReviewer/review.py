@@ -1,7 +1,7 @@
 from saulochess import chess_review as cr
 import os
 import chess.engine
-from core.gameReviewer.base import Eval,Result,GameReview
+from backend.core.gameReviewer.base import Eval,Result,GameReview
 
 STOCKFISH_PATH = os.path.abspath(
     os.path.join(os.path.dirname(__file__), "..", "..", "engines", "STOCKFISH.exe")

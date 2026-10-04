@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 from fastapi import FastAPI, HTTPException
-from core.gameReviewer import review as r
+from backend.core.gameReviewer import review as r
 from chess import Board, Move
 import threading, uvicorn
 import time
-from core import dataHandler as dh
-from core.api import chesscom as cc
+from backend.core import dataHandler as dh
+from backend.core.api import chesscom as cc
 from fastapi.middleware.cors import CORSMiddleware
 import requests
 
