@@ -1,6 +1,5 @@
-saulochess
+fastapi
+uvicorn
+requests
 python-chess
-ipython
-pandas
-numpy
-tqdm
+saulochess
