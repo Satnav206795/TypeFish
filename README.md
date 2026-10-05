@@ -171,4 +171,6 @@ TypeFish/
 
 ## License
 
+Copyright (C) 2026 Satnav206795
+
 Released under the [GPL-3.0 license](LICENSE).
