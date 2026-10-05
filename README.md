@@ -159,6 +159,7 @@ TypeFish/
 - [ ] Native apps for Windows, Linux and macOS
 - [ ] Lichess support
 - [ ] Authentication for self-hosted deployments
+- [ ] Replace `saulochess` with TypeFish's own review engine (built on python-chess only)
 
 ## Credits
 
