@@ -1,12 +1,15 @@
 import whiteKing from "./assets/wK.svg";
-import Square from "./components/Square";
+import ChessBoard from "./components/ChessBoard";
 
 function App() {
   return (
-    <div className="board">
-      <Square x={0} y={0} colour="beige" image={whiteKing} />
-      <Square x={12.5} y={0} colour="blue" />
-    </div>
+    <ChessBoard
+      x={10}
+      y={10}
+      size={80}
+      chessColourWhite="rgb(199, 192, 131)"
+      chessColourBlack="rgb(11, 63, 1)"
+    />
   );
 }
 
