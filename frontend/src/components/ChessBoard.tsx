@@ -1,23 +1,20 @@
 import Square from "./Square";
 
 type ChessBoardProps = {
-    x: number;
-    y: number;
-    size: number;
     chessColourWhite: string;
     chessColourBlack: string;
 };
 
 
-function ChessBoard({ x, y, size, chessColourWhite, chessColourBlack }: ChessBoardProps) {
+function ChessBoard({chessColourWhite, chessColourBlack }: ChessBoardProps) {
+
+
     return (
         <div
             className="chess-board"
             style={{
-                left: `${x}vw`,
-                top: `${y}vh`,
-                width: `${size}vmin`,
-                height: `${size}vmin`,
+                gridColumn: 1,
+                minWidth: 0,
             }}
         >
             {Array.from({ length: 8 }, (_, row) =>
@@ -27,14 +24,19 @@ function ChessBoard({ x, y, size, chessColourWhite, chessColourBlack }: ChessBoa
                         id={`${row}-${col}`}
                         x={col * 12.5}
                         y={row * 12.5}
-                        colour={(row + col) % 2 === 0
-                            ? chessColourWhite
-                            : chessColourBlack}
+                        colour={
+                            (row + col) % 2 === 0
+                                ? chessColourWhite
+                                : chessColourBlack
+                        }
                     />
                 ))
             )}
         </div>
     );
+
+
+
 }
 
 export default ChessBoard;

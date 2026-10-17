@@ -13,22 +13,30 @@ function Square({ x, y, colour, image, id }: SquareProps) {
   }
 
 
-  return (
-    <div
-      className="square"
-      id = {id}
-      onClick={onClick}
-      style={{
-        left: `${x}%`,
-        top: `${y}%`,
-        width: '12.5%',
-        height: '12.5%',
-        backgroundColor: colour,
-      }}
-    >
-      {image && <img src={image} className="chess-piece" alt="Chess piece" />}
-    </div>
-  );
+
+    return (
+        <div
+            className="square"
+            id={id}
+            onClick={onClick}
+            style={{
+                left: `${x}%`,
+                top: `${y}%`,
+                width: "12.5%",
+                height: "12.5%",
+                backgroundColor: colour,
+            }}
+        >
+            {image && (
+                <img
+                    src={image}
+                    className="chess-piece"
+                    alt="Chess piece"
+                />
+            )}
+        </div>
+    );
+
 }
 
 export default Square;
