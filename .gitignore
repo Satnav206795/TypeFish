@@ -221,6 +221,7 @@ __marimo__/
 engines/
 *.db
 *.sqlite3
+node_modules/
 
 #Testing
 test.py
