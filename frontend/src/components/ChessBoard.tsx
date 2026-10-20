@@ -8,12 +8,11 @@ type ChessBoardProps = {
 
 function ChessBoard({chessColourWhite, chessColourBlack }: ChessBoardProps) {
 
-
     return (
         <div
             className="chess-board"
             style={{
-                gridColumn: 1,
+                gridColumn: 2,
                 minWidth: 0,
             }}
         >
