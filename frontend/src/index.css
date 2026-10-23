@@ -24,27 +24,30 @@ body {
 }
 
 .app-layout {
-    display: grid;
-    grid-template-columns: 10vw 40vw 30vw 20vw;
-    gap: 0;
-    align-items: start;
-    height: 100vh;
+  display: grid;
+  grid-template-columns: 10vw 40vw 30vw 20vw;
+  gap: 0;
+  align-items: start;
+  height: 100vh;
 }
 
 
 .chess-board {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    max-height: 100vh;
-    border: min(2vw, 5vh) solid rgba(0, 0, 0, 0.623);
-    border-radius: min(2vw, 5vh);
-    overflow: hidden;
-    box-sizing: border-box;
-    justify-self: center;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-height: 100vh;
+  border: min(2vw, 5vh) solid rgba(0, 0, 0, 0.623);
+  border-radius: min(2vw, 5vh);
+  overflow: hidden;
+  box-sizing: border-box;
+  justify-self: center;
 }
 
 .square {
-    position: absolute;
+  position: absolute;
 }
 
+.button {
+  position: relative;
+}

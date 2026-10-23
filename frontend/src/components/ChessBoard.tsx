@@ -3,16 +3,17 @@ import Square from "./Square";
 type ChessBoardProps = {
     chessColourWhite: string;
     chessColourBlack: string;
+    gridColumn: number
 };
 
 
-function ChessBoard({chessColourWhite, chessColourBlack }: ChessBoardProps) {
+function ChessBoard({chessColourWhite, chessColourBlack, gridColumn }: ChessBoardProps) {
 
     return (
         <div
             className="chess-board"
             style={{
-                gridColumn: 2,
+                gridColumn: gridColumn,
                 minWidth: 0,
             }}
         >
